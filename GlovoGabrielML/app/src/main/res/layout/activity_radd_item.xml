@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_yellow"
+    tools:context=".RAddItem.RAddItemView">
+
+    <ImageView
+        android:id="@+id/RHomeFondo"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
+        android:orientation="vertical"
+        android:background="@drawable/bottom_window"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AÑADIR UN PRODUCTO"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            android:layout_marginTop="20dp"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/alata"
+            android:includeFontPadding="false"
+            android:text="Especifique el nombre, la descripción, la URL de la imagen y el precio del producto."
+            android:textAlignment="center"
+            android:textColor="@color/light_white"
+            android:textSize="20sp"
+            app:lineHeight="20sp" />
+        <EditText
+            android:id="@+id/RAddItemNombre"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/text_field_green"
+            android:backgroundTint="@color/main_green"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:hint="Nombre del producto..."
+            android:textColorHint="@color/light_white"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/RAddItemImagen"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:background="@drawable/text_field_green"
+            android:backgroundTint="@color/main_green"
+            android:inputType="text"
+            android:padding="8dp"
+            android:hint="URL de la imagen..."
+            android:textColorHint="@color/light_white"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/RAddItemDesc"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:layout_gravity="center"
+            android:gravity="top"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:background="@drawable/text_field_green"
+            android:backgroundTint="@color/main_green"
+            android:padding="8dp"
+            android:hint="Descripción..."
+            android:textColorHint="@color/light_white"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/RAddItemPrecio"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:background="@drawable/text_field_green"
+            android:backgroundTint="@color/main_green"
+            android:inputType="text"
+            android:padding="8dp"
+            android:hint="Precio..."
+            android:textColorHint="@color/light_white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/RAddItemBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="@color/main_yellow"
+            android:fontFamily="@font/alata"
+            android:textStyle="bold"
+            android:text="GUARDAR PRODUCTO"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:includeFontPadding="false"/>
+
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/RAddBackBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="15dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

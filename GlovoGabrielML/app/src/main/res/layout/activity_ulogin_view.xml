@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_yellow"
+    tools:context=".UsuarioLogin.ULoginView">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="277dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/logo_glovo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/alata"
+        android:text="Lo que pidas, te lo llevamos."
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/bottom_window"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/alata"
+            android:includeFontPadding="false"
+            android:text="Inicio de sesión:"
+            android:textColor="@color/white"
+            android:textSize="45sp" />
+
+        <TextView
+            android:layout_width="268dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/alata"
+            android:includeFontPadding="false"
+            android:text="Introduce tu nombre y contraseña de usuario."
+            android:textAlignment="center"
+            android:textColor="@color/light_white"
+            android:textSize="20sp"
+            app:lineHeight="19sp" />
+
+        <EditText
+            android:id="@+id/usuarioField"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/text_field_green"
+            android:backgroundTint="@color/main_green"
+            android:drawableLeft="@drawable/user_icon"
+            android:drawablePadding="12dp"
+            android:inputType="text"
+            android:padding="8dp"
+            android:hint="Nombre de usuario..."
+            android:textColor="@color/white"
+            android:textColorHint="@color/light_white"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/contrasenaField"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/text_field_green"
+            android:backgroundTint="@color/main_green"
+            android:drawableLeft="@drawable/contrasena_icon"
+            android:drawablePadding="12dp"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:hint="Contraseña..."
+            android:textColor="@color/white"
+            android:textColorHint="@color/light_white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/uLoginBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="@color/main_yellow"
+            android:fontFamily="@font/alata"
+            android:textStyle="bold"
+            android:text="INICIAR SESIÓN"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:includeFontPadding="false"/>
+
+
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/ULoginBackBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back_icon_transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="15dp"/>
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dp"
+        android:text="¿No recuerdas tus datos de inicio de sesión? Haz click AQUÍ."
+        android:textAlignment="center"
+        android:textColor="@color/light_white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
