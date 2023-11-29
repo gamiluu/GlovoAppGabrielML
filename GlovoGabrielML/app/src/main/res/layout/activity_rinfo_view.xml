@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_yellow"
+    tools:context=".RInfo.RInfoView">
+    <ImageView
+        android:id="@+id/RInfoFondo"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bottom_window"
+        android:orientation="vertical"
+        android:layout_marginTop="180dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:id="@+id/RInfoTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alata"
+                android:includeFontPadding="false"
+                android:text="La Zarzamora"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/RInfoRate"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rate_icon"
+                android:layout_gravity="end|center"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/RInfoUbi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pl. Goicoerrotea 1, Tarazona"
+            android:includeFontPadding="false"
+            android:textColor="@color/main_yellow"
+            android:textStyle="bold|italic"
+            android:textSize="16sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:id="@+id/RInfoDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Muy rica comida, elaborada en el momento y una atención excelente. Muy buena ubicación en una localidad sorprendente."
+            android:fontFamily="@font/alata"
+            android:includeFontPadding="false"
+            android:textColor="@color/light_white"
+            android:textSize="18sp"
+            app:lineHeight="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nuestros productos:"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/alata"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RInfoRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/card_rinfo_producto"/>
+
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/RInfoBackBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="15dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

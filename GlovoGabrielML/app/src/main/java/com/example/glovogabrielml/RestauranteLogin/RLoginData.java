@@ -2,7 +2,7 @@ package com.example.glovogabrielml.RestauranteLogin;
 
 public class RLoginData {
     /////////////////////////////ATRIBUTOS/////////////////////////////
-    private int id_restaurante;
+    private Integer id_restaurante;
 
     /////////////////////////////ATRIBUTOS/////////////////////////////
     public Integer getId() {

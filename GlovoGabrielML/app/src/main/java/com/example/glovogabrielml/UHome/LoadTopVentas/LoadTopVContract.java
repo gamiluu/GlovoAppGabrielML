@@ -1,4 +1,4 @@
-package com.example.glovogabrielml.UHome;
+package com.example.glovogabrielml.UHome.LoadTopVentas;
 
 
 
@@ -19,6 +19,5 @@ public interface LoadTopVContract {
             public void onFinished(ArrayList<LoadTopVData> lstTopV);
             public void onFailure(String err);
         }
-
     }
 }

@@ -13,6 +13,7 @@ public class Restaurante {
     private String descripcion;
     private String ubicacion;
     private String imagen;
+    private Double nota_media;
 
     //////////////////////////////////////CONSTRUCTORES//////////////////////////////////////
     public Restaurante(){}
@@ -24,14 +25,21 @@ public class Restaurante {
         this.ubicacion = ubicacion;
         this.imagen = imagen;
     }
-    public Restaurante(String nombre, String imagen){
+    public Restaurante(int id_restaurante, String nombre, String imagen){
+        this.id_restaurante = id_restaurante;
         this.nombre = nombre;
         this.imagen = imagen;
+    }
+    public Restaurante(int id_restaurante, String nombre, String imagen, Double nota_media){
+        this.id_restaurante = id_restaurante;
+        this.nombre = nombre;
+        this.imagen = imagen;
+        this.nota_media = nota_media;
     }
 
     /////////////////////////////////////////MÉTODOS/////////////////////////////////////////
 
-    public int getId_restaurante() {
+    public Integer getId_restaurante() {
         return id_restaurante;
     }
     public void setId_restaurante(int id_restaurante) {
@@ -60,6 +68,12 @@ public class Restaurante {
     }
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
+    }
+    public String getImagen() {
+        return imagen;
+    }
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public static String arrayToJson(ArrayList<Restaurante> restaurantes){

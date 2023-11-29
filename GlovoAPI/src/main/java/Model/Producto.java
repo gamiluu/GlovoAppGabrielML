@@ -13,6 +13,7 @@ public class Producto {
     private String imagen;
     private String descripcion;
     private Integer precio;
+    private Integer cantidad;
 
     //////////////////////////////////////CONSTRUCTORES//////////////////////////////////////
     public Producto () {}
@@ -30,6 +31,12 @@ public class Producto {
         this.imagen = imagen;
         this.descripcion = descripcion;
         this.precio = precio;
+    }
+    public Producto(String nombre, String imagen, int precio, int cantidad) {
+        this.nombre = nombre;
+        this.imagen = imagen;
+        this.precio = precio;
+        this.cantidad = cantidad;
     }
 
     /////////////////////////////////////////MÉTODOS/////////////////////////////////////////

@@ -63,6 +63,6 @@ public class RLoginView extends AppCompatActivity implements RLoginContract.View
     //En caso de que falle el login.
     @Override
     public void failureLogin(String err) {
-        Toast.makeText(RLoginView.this, err, Toast.LENGTH_SHORT).show();
+        Toast.makeText(RLoginView.this, "Datos de acceso incorrectos.", Toast.LENGTH_SHORT).show();
     }
 }

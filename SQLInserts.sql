@@ -36,24 +36,33 @@ INSERT INTO compras (id_usuario, confirmada, fecha) VALUES(3,0,NOW());
 SELECT * FROM compras;
 
 -- Inserción LINEAS_COMPRA
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (2, 3, 12);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (5, 8, 4);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (6, 2, 18);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (4, 6, 5);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (3, 9, 14);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (7, 1, 10);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (2, 7, 8);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (5, 4, 15);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (6, 10, 3);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (4, 5, 6);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (3, 1, 20);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (7, 9, 10);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (2, 6, 13);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (5, 3, 7);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (6, 8, 11);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (4, 2, 9);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (3, 10, 2);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (7, 5, 16);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (2, 1, 4);
-INSERT INTO lineas_compra (id_compra, id_producto, cantidad) VALUES (5, 7, 19);
+INSERT INTO lineas_compra (id_compra, id_producto) VALUES (9, 17);
 SELECT * FROM lineas_compra ORDER BY id_compra;
+DELETE FROM lineas_compra WHERE id_compra = 8;
+
+-- Inserciones PUNTUACIONES
+SELECT * FROM puntuaciones ORDER BY id_usuario, id_restaurante;
+
+-- Inserciones CATEGORÍAS
+INSERT INTO categorias (categoria) VALUES
+('Chino'),
+('Hamburguesería'),
+('Menu del día'),
+('Bar'),
+('Taberna'),
+('Cervecería');
+SELECT * FROM categorias; 
+
+-- Inserciones RESTAURANTES_CATEGORÍAS
+INSERT INTO restaurantes_categorias VALUES(1,1);
+INSERT INTO restaurantes_categorias VALUES(2,2);
+INSERT INTO restaurantes_categorias VALUES(2,3);
+INSERT INTO restaurantes_categorias VALUES(2,4);
+INSERT INTO restaurantes_categorias VALUES(3,2);
+INSERT INTO restaurantes_categorias VALUES(4,3);
+INSERT INTO restaurantes_categorias VALUES(4,4);
+INSERT INTO restaurantes_categorias VALUES(5,4);
+INSERT INTO restaurantes_categorias VALUES(5,5);
+INSERT INTO restaurantes_categorias VALUES(5,6);
+UPDATE restaurantes_categorias SET id_categoria=0 WHERE id_restaurante=0;
+SELECT * FROM restfaurantes_categorias;

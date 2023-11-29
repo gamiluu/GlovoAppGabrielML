@@ -1,6 +1,4 @@
-import Action.ProductoAction;
-import Action.RestauranteAction;
-import Action.UsuarioAction;
+import Action.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +26,16 @@ public class Controller extends HttpServlet {
                 break;
             case "RESTAURANTES":
                 out.print(new RestauranteAction().execute(request, response));
+                break;
+            case "PUNTUACIONES":
+                out.print(new PuntuacionAction().execute(request, response));
+                break;
+
+            case "CATEGORIAS":
+                out.print(new CategoriaAction().execute(request, response));
+                break;
+            case "COMPRAS":
+                out.print(new CompraAction().execute(request, response));
                 break;
         }
     }

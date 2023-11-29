@@ -20,11 +20,20 @@ public class RestauranteAction {
             case "FIND_ALL":
                 respuestaJson = findAll(request, response);
                 break;
+            case "FIND_BY_CATEGORIA":
+                respuestaJson = findByCategoria(request, response);
+                break;
             case "FIND_TOP_VENTAS":
                 respuestaJson = findTopVentas(request, response);
                 break;
             case "LOGIN":
                 respuestaJson = findClave(request, response);
+                break;
+            case "FIND_TOP_RATING":
+                respuestaJson = findTopRating(request, response);
+                break;
+            case "FIND_RESTAURANTE":
+                respuestaJson = findRestaurante(request, response);
                 break;
         }
         return respuestaJson;
@@ -47,10 +56,36 @@ public class RestauranteAction {
         return Restaurante.arrayToJson(listaRestaurantes);
     }
 
+    private String findByCategoria(HttpServletRequest request, HttpServletResponse response) {
+        String id_categoria = request.getParameter("IDCATEGORIA");
+        String rate_order = request.getParameter("RATE_ORDER");
+        RestauranteDAO restauranteDao = new RestauranteDAO();
+        ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
+        listaRestaurantes = restauranteDao.findByCategoria(id_categoria);
+        System.out.println(Restaurante.arrayToJson(listaRestaurantes));
+        return Restaurante.arrayToJson(listaRestaurantes);
+    }
+
+    private String findRestaurante(HttpServletRequest request, HttpServletResponse response) {
+        String id_restuarante = request.getParameter("IDRESTAURANTE");
+        RestauranteDAO restauranteDao = new RestauranteDAO();
+        Restaurante restaurante = restauranteDao.findRestaurante(id_restuarante);
+        System.out.println(Restaurante.restauranteToJson(restaurante));
+        return Restaurante.restauranteToJson(restaurante);
+    }
+
     private String findTopVentas(HttpServletRequest request, HttpServletResponse response) {
         RestauranteDAO restauranteDao = new RestauranteDAO();
         ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
         listaRestaurantes = restauranteDao.findTopVentas();
+        System.out.println(Restaurante.arrayToJson(listaRestaurantes));
+        return Restaurante.arrayToJson(listaRestaurantes);
+    }
+
+    private String findTopRating(HttpServletRequest request, HttpServletResponse response) {
+        RestauranteDAO restauranteDao = new RestauranteDAO();
+        ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
+        listaRestaurantes = restauranteDao.findTopRating();
         System.out.println(Restaurante.arrayToJson(listaRestaurantes));
         return Restaurante.arrayToJson(listaRestaurantes);
     }

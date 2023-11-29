@@ -24,8 +24,20 @@ public class ProductoAction {
             case "ADD_PRODUCTO":
                 respuestaJson = addProducto(request, response);
                 break;
+            case "FIND_CURRENT_CART":
+                respuestaJson = findCurrentCart(request, response);
+                break;
         }
         return respuestaJson;
+    }
+
+    private String findCurrentCart(HttpServletRequest request, HttpServletResponse response) {
+        String id_usuario = request.getParameter("IDUSUARIO");
+        ProductoDAO productoDao = new ProductoDAO();
+        ArrayList<Producto> listaProductos = new ArrayList<>();
+        listaProductos = productoDao.findCurrentCart(id_usuario);
+        System.out.println(Producto.arrayToJson(listaProductos));
+        return Producto.arrayToJson(listaProductos);
     }
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) {

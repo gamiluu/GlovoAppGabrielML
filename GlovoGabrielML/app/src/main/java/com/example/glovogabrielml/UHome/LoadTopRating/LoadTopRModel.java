@@ -1,9 +1,7 @@
-package com.example.glovogabrielml.UHome;
+package com.example.glovogabrielml.UHome.LoadTopRating;
 
 import android.util.Log;
 
-import com.example.glovogabrielml.RHome.LoadItemData;
-import com.example.glovogabrielml.RHome.LoadItemPresenter;
 import com.example.glovogabrielml.Utils.ApiService;
 import com.example.glovogabrielml.Utils.RetrofitCliente;
 
@@ -13,35 +11,34 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoadTopVModel implements LoadTopVContract.Model{
+public class LoadTopRModel implements LoadTopRContract.Model{
     //ATRIBUTOS
-    private LoadTopVPresenter presenter;
-
+    private LoadTopRPresenter presenter;
     //CONSTRUCTORES
-    public LoadTopVModel(LoadTopVPresenter presenter){
+    public LoadTopRModel(LoadTopRPresenter presenter) {
         this.presenter = presenter;
     }
 
     //MÉTODOS
     @Override
-    public void loadTopVAPI(loadTopVListener loadTopVListener) {
+    public void loadTopRAPI(loadTopRListener loadTopRListener) {
         ApiService apiService = RetrofitCliente.getClient("http://10.0.2.2:8080/app/").create(ApiService.class);
 
-        Call<ArrayList<LoadTopVData>> call = apiService.getTopVentas("RESTAURANTES.FIND_TOP_VENTAS");
-        call.enqueue(new Callback<ArrayList<LoadTopVData>>() {
+        Call<ArrayList<LoadTopRData>> call = apiService.getTopRating("RESTAURANTES.FIND_TOP_RATING");
+        call.enqueue(new Callback<ArrayList<LoadTopRData>>() {
             @Override
-            public void onResponse(Call<ArrayList<LoadTopVData>> call, Response<ArrayList<LoadTopVData>> response) {
+            public void onResponse(Call<ArrayList<LoadTopRData>> call, Response<ArrayList<LoadTopRData>> response) {
                 if (response.isSuccessful()) {
                     System.out.println("La peticion ha ido bien, el resultado del body es esto: " + response.body());
-                    ArrayList<LoadTopVData> lstTopV = response.body();
+                    ArrayList<LoadTopRData> lstTopR = response.body();
                     System.out.println(response.body());
-                    for (LoadTopVData item: lstTopV) {
+                    for (LoadTopRData item: lstTopR) {
                         System.out.println(item.toString());
                     }
-                    if (lstTopV.isEmpty()){
-                        loadTopVListener.onFailure("No tienes productos a la venta.");
+                    if (lstTopR.isEmpty()){
+                        loadTopRListener.onFailure("No se encontraron establecimientos.");
                     }else{
-                        loadTopVListener.onFinished(lstTopV);
+                        loadTopRListener.onFinished(lstTopR);
 
                     }
                 } else {
@@ -50,10 +47,9 @@ public class LoadTopVModel implements LoadTopVContract.Model{
             }
 
             @Override
-            public void onFailure(Call<ArrayList<LoadTopVData>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<LoadTopRData>> call, Throwable t) {
                 Log.e("Response error", "Cuerpo del error: " + t.getMessage());
             }
         });
     }
-
 }

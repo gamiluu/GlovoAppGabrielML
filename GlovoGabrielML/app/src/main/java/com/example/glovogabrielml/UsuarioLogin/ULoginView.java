@@ -2,7 +2,9 @@ package com.example.glovogabrielml.UsuarioLogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,13 +56,18 @@ public class ULoginView extends AppCompatActivity implements ULoginContract.View
 
     @Override
     public void successLogin(ULoginData uLoginData) {
+        //Guardamos el la ID del usuario como "inicio de sesión" en local.
+        SharedPreferences datosSesion = getSharedPreferences("DatosDeUsuario", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = datosSesion.edit();
+        editor.putInt("idUsuario", uLoginData.getId_usuario());
+        editor.apply();
+        //Accedemos a la siguiente ventana.
         Intent intent = new Intent(ULoginView.this, UHomeView.class);
-        intent.putExtra("id_usuario", uLoginData.getId_usuario());
         startActivity(intent);
     }
 
     @Override
     public void failureLogin(String err) {
-        Toast.makeText(ULoginView.this, err, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ULoginView.this, "Nombre o contraseña incorrectos.", Toast.LENGTH_SHORT).show();
     }
 }

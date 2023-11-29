@@ -30,7 +30,7 @@ public class LoadItemModel implements RHomeContract.Model{
             @Override
             public void onResponse(Call<ArrayList<LoadItemData>> call, Response<ArrayList<LoadItemData>> response) {
                 if (response.isSuccessful()) {
-                    System.out.println("La peticion ha ido bien, el resultado del body es esto: " + response.body());
+                    System.out.println("La peticion ha ido bien, el resultado del body es: " + response.body());
                     ArrayList<LoadItemData> lstItems = response.body();
                     System.out.println(response.body());
                     for (LoadItemData item: lstItems) {

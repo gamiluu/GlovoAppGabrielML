@@ -82,7 +82,34 @@ public class ProductoDAO {
         } finally {
             motorSql.desconectar();
         }
-        System.out.println("Han sido modificadas" + respuesta + " lineas.");
+        System.out.println("Han sido modificadas " + respuesta + " lineas.");
         return respuesta;
+    }
+    public ArrayList<Producto> findCurrentCart(String id_usuario){
+        ArrayList<Producto> listaProductos = new ArrayList<>();
+        try{
+            motorSql.conectar();
+
+            ResultSet rs = motorSql.consultar("SELECT P.nombre, P.imagen, P.precio, count(P.id_producto) AS cantidad FROM "
+                    + "productos P INNER JOIN lineas_compra LC ON P.id_producto = LC.id_producto "
+                    + "INNER JOIN compras C ON LC.id_compra = C.id_compra "
+                    + "WHERE C.id_usuario = "+id_usuario+" AND C.confirmada = 0 "
+                    + "GROUP BY P.id_producto");
+
+            while(rs.next()){Producto producto = new Producto(
+                    rs.getString("nombre"),
+                    rs.getString("imagen"),
+                    rs.getInt("precio"),
+                    rs.getInt("cantidad")
+            );
+                listaProductos.add(producto);
+            }
+        }catch(SQLException ex){
+            ex.getMessage();
+        } finally {
+            motorSql.desconectar();
+        }
+        System.out.println(listaProductos);
+        return listaProductos;
     }
 }

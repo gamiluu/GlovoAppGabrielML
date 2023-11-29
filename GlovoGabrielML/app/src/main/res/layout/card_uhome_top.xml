@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/item_bg"
     app:cardCornerRadius="10dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:id="@+id/UHomeTopCard">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,7 +17,7 @@
             <ImageView
                 android:id="@+id/UHomeTopImage"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:layout_marginBottom="8dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/default_bg" />
@@ -30,7 +31,7 @@
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
