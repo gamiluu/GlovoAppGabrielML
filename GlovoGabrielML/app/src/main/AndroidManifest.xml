@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
@@ -17,6 +16,9 @@
         android:theme="@style/Theme.GlovoGabrielML"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".PuntuarRestaurante.PuntuarView"
+            android:exported="false" />
         <activity
             android:name=".CategoryList.CategoryListView"
             android:exported="false" />

@@ -4,6 +4,7 @@ import com.example.glovogabrielml.Carrito.ConfirmCompra.ConfirmCompraData;
 import com.example.glovogabrielml.Carrito.LoadCarrito.LoadCarritoData;
 import com.example.glovogabrielml.Carrito.LoadHistorial.LoadHistorialData;
 import com.example.glovogabrielml.CategoryList.LoadByCatData;
+import com.example.glovogabrielml.PuntuarRestaurante.PuntuarData;
 import com.example.glovogabrielml.RAddItem.AddItemData;
 import com.example.glovogabrielml.RHome.LoadItemData;
 import com.example.glovogabrielml.RInfo.LoadRInfo.LoadRInfoData;
@@ -69,7 +70,9 @@ public interface ApiService {
 
     //Devuelve los restaurantes de una categoría.
     @GET("MyServlet")
-    Call<ArrayList<LoadByCatData>> getByCategoria(@Query("ACTION") String action, @Query("IDCATEGORIA") int id_categoria);
+    Call<ArrayList<LoadByCatData>> getByCategoria(@Query("ACTION") String action,
+                                                  @Query("IDCATEGORIA") int id_categoria,
+                                                  @Query("RATE_ORDER") String orden);
 
     //Devuelve el historial de compras.
     @GET("MyServlet")
@@ -83,4 +86,11 @@ public interface ApiService {
                                  @Query("IMAGEN") String imagen,
                                  @Query("DESCRIPCION") String descripcion,
                                  @Query("PRECIO") Integer precio);
+
+    //Petición de inserción de una puntuación a restaurante, devuelve la cantidad de lineas afectadas, que deberán ser 1.
+    @GET("MyServlet")
+    Call<PuntuarData> insertRating(@Query("ACTION") String action,
+                                   @Query("USUARIO") Integer id_usuario,
+                                   @Query("RESTAURANTE") Integer id_restaurante,
+                                   @Query("NOTA") Integer nota);
 }

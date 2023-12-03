@@ -39,17 +39,42 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/OrdenRatingBtn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Restaurantes listados:"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:fontFamily="@font/alata"
-            android:includeFontPadding="false"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="10dp"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/liked_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/alata"
+                android:gravity="left"
+                android:includeFontPadding="false"
+                android:text="Orden por puntuación:"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/OrdenRatingIndicador"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end|center"
+                android:src="@drawable/up_icon" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ListaPorCategoriaRV"

@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.glovogabrielml.Beans.Producto;
 import com.example.glovogabrielml.Beans.Restaurante;
+import com.example.glovogabrielml.Carrito.CarritoView;
 import com.example.glovogabrielml.GlovoMainView;
 import com.example.glovogabrielml.R;
 import com.example.glovogabrielml.RHome.RHomeView;
@@ -74,6 +76,6 @@ public class RAddItemView extends AppCompatActivity implements AddItemContract.V
 
     @Override
     public void failureInsert(String err) {
-
+        Toast.makeText(RAddItemView.this, err, Toast.LENGTH_SHORT).show();
     }
 }

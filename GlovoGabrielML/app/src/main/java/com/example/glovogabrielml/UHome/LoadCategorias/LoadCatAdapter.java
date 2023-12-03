@@ -50,6 +50,7 @@ public class LoadCatAdapter extends RecyclerView.Adapter<LoadCatAdapter.ViewHold
             Intent intent = new Intent(context, CategoryListView.class);
             intent.putExtra("id_categoria", lstCategorias.get(position).getId_categoria());
             intent.putExtra("categoria", lstCategorias.get(position).getCategoria());
+            intent.putExtra("orden", "DESC");
             context.startActivity(intent);
         });
         // RELLENAR CON LOS DATOS

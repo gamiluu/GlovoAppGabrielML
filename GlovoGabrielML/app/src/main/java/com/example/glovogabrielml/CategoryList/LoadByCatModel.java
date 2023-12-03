@@ -22,10 +22,10 @@ public class LoadByCatModel implements LoadByCatContract.Model{
 
     //MÉTODOS
     @Override
-    public void loadByCatAPI(int id_categoria, loadByCatListener loadByCatListener) {
+    public void loadByCatAPI(int id_categoria, String orden, loadByCatListener loadByCatListener) {
         ApiService apiService = RetrofitCliente.getClient("http://10.0.2.2:8080/app/").create(ApiService.class);
 
-        Call<ArrayList<LoadByCatData>> call = apiService.getByCategoria("RESTAURANTES.FIND_BY_CATEGORIA", id_categoria);
+        Call<ArrayList<LoadByCatData>> call = apiService.getByCategoria("RESTAURANTES.FIND_BY_CATEGORIA", id_categoria, orden);
         call.enqueue(new Callback<ArrayList<LoadByCatData>>() {
             @Override
             public void onResponse(Call<ArrayList<LoadByCatData>> call, Response<ArrayList<LoadByCatData>> response) {

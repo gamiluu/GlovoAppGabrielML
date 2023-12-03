@@ -33,15 +33,15 @@ INSERT INTO compras (id_usuario, confirmada, fecha) VALUES(3,1,NOW());
 INSERT INTO compras (id_usuario, confirmada, fecha) VALUES(1,0,NOW());
 INSERT INTO compras (id_usuario, confirmada, fecha) VALUES(2,0,NOW());
 INSERT INTO compras (id_usuario, confirmada, fecha) VALUES(3,0,NOW());
-SELECT * FROM compras;
+SELECT * FROM compras WHERE id_usuario = 2;
 
 -- Inserción LINEAS_COMPRA
-INSERT INTO lineas_compra (id_compra, id_producto) VALUES (9, 17);
+INSERT INTO lineas_compra (id_compra, id_producto) VALUES (13, 8);
 SELECT * FROM lineas_compra ORDER BY id_compra;
 DELETE FROM lineas_compra WHERE id_compra = 8;
 
 -- Inserciones PUNTUACIONES
-SELECT * FROM puntuaciones ORDER BY id_usuario, id_restaurante;
+SELECT * FROM puntuaciones WHERE id_usuario = 2 ORDER BY id_usuario, id_restaurante;
 
 -- Inserciones CATEGORÍAS
 INSERT INTO categorias (categoria) VALUES

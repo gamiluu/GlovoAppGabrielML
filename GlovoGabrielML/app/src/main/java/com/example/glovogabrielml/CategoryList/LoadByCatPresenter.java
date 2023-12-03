@@ -15,8 +15,8 @@ public class LoadByCatPresenter implements LoadByCatContract.Presenter, LoadByCa
 
     //MÉTODOS
     @Override
-    public void LoadByCat(int id_categoria) {
-        model.loadByCatAPI(id_categoria, this);
+    public void LoadByCat(int id_categoria, String orden) {
+        model.loadByCatAPI(id_categoria, orden, this);
     }
 
     @Override

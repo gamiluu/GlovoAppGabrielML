@@ -44,7 +44,7 @@ public class RestauranteDAO {
         return listaRestaurantes;
     }
 
-    public ArrayList<Restaurante> findByCategoria(String id_categoria){
+    public ArrayList<Restaurante> findByCategoria(String id_categoria, String rate_order){
         ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
         try{
             motorSql.conectar();
@@ -54,7 +54,7 @@ public class RestauranteDAO {
                     "INNER JOIN puntuaciones P ON R.id_restaurante=P.id_restaurante " +
                     "WHERE RC.id_categoria = "+id_categoria+" " +
                     "GROUP BY R.id_restaurante " +
-                    "ORDER BY nota_media DESC");
+                    "ORDER BY nota_media "+rate_order);
 
             while(rs.next()){Restaurante restaurante = new Restaurante(
                     rs.getInt("id_restaurante"),

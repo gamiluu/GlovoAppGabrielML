@@ -61,7 +61,7 @@ public class RestauranteAction {
         String rate_order = request.getParameter("RATE_ORDER");
         RestauranteDAO restauranteDao = new RestauranteDAO();
         ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
-        listaRestaurantes = restauranteDao.findByCategoria(id_categoria);
+        listaRestaurantes = restauranteDao.findByCategoria(id_categoria, rate_order);
         System.out.println(Restaurante.arrayToJson(listaRestaurantes));
         return Restaurante.arrayToJson(listaRestaurantes);
     }

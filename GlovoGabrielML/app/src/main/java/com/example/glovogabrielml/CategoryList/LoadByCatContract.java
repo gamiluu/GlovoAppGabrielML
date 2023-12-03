@@ -9,11 +9,11 @@ public interface LoadByCatContract {
         public void failureLoadByCat(String err);
     }
     public interface Presenter{
-        public void LoadByCat(int id_categoria);
+        public void LoadByCat(int id_categoria, String orden);
 
     }
     public interface Model{
-        public void loadByCatAPI(int id_categoria, LoadByCatContract.Model.loadByCatListener loadByCatListener);
+        public void loadByCatAPI(int id_categoria, String orden, LoadByCatContract.Model.loadByCatListener loadByCatListener);
         public interface loadByCatListener{
             public void onFinished(ArrayList<LoadByCatData> lstRestaurantes);
             public void onFailure(String err);

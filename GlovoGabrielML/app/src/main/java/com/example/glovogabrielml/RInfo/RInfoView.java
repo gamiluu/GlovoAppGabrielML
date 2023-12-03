@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.glovogabrielml.PuntuarRestaurante.PuntuarView;
 import com.example.glovogabrielml.R;
 import com.example.glovogabrielml.RHome.LoadItemAdapter;
 import com.example.glovogabrielml.RHome.RHomeView;
@@ -48,11 +49,7 @@ public class RInfoView extends AppCompatActivity implements LoadRInfoContract.Vi
         Bundle extras = getIntent().getExtras();
         rInfoPresenter.LoadRInfo(extras.getInt("id_restaurante"));
         rProductosPresenter.LoadRProducts(extras.getInt("id_restaurante"));
-    }
-
-    @Override
-    public void successRLoadInfo(LoadRInfoData rInfoData) {
-        setInfo(rInfoData);
+        //Botón de vuelta a la página principal.
         ImageButton backBtn = findViewById(R.id.RInfoBackBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +58,21 @@ public class RInfoView extends AppCompatActivity implements LoadRInfoContract.Vi
                 startActivity(intent);
             }
         });
+        //Botón para puntuar el restaurante
+        ImageButton rateBtn = findViewById(R.id.RInfoRate);
+        rateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RInfoView.this, PuntuarView.class);
+                intent.putExtra("id_restaurante", extras.getInt("id_restaurante"));
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void successRLoadInfo(LoadRInfoData rInfoData) {
+        setInfo(rInfoData);
     }
 
     @Override

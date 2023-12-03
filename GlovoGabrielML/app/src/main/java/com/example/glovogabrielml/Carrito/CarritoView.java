@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -82,7 +84,6 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
             @Override
             public void onClick(View v) {
                 confirmCompraPresenter.confirmCompra(idUsuario);
-
             }
         });
     }
@@ -105,8 +106,7 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
     //CONFIRMAR COMPRA
     @Override
     public void successConfirm(ConfirmCompraData confirmCompraData) {
-        Intent intent = new Intent(CarritoView.this, CarritoView.class);
-        startActivity(intent);
+        makeNotifiation();
     }
 
     @Override
@@ -130,7 +130,35 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
     }
 
     //FUNCIONES SOBRE LAS NOTIFICACIONES
+    public void makeNotifiation(){
+        String channelID = "CHANNEL_ID_NOTIFICATION";
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelID);
+        builder.setSmallIcon(R.drawable.cart_icon)
+            .setContentTitle("Confirmación de pedido")
+            .setContentText("Acabas de confirmar tu compra, encontraras el pedido en tu historial de compras.")
+            .setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
+        Intent intent = new Intent(getApplicationContext(), CarritoView.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
+                0, intent, PendingIntent.FLAG_MUTABLE);
+        builder.setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = notificationManager.getNotificationChannel(channelID);
+            if(notificationChannel == null){
+                int importance = NotificationManager.IMPORTANCE_HIGH;
+                notificationChannel = new NotificationChannel(channelID, "Canal de notificaciones", importance);
+                notificationChannel.setLightColor(R.color.main_green);
+                notificationChannel.enableVibration(true);
+                notificationManager.createNotificationChannel(notificationChannel);
+            }
+        }
+
+        notificationManager.notify(0, builder.build());
+    }
 
 
 }
