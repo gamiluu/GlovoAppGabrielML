@@ -58,6 +58,15 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito_view);
+        //Pedimos permiso de notificación en caso de que sea necesario o que no esté dado el permiso.
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+            if(ContextCompat.checkSelfPermission(CarritoView.this,
+                    android.Manifest.permission.POST_NOTIFICATIONS) !=
+                    PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(CarritoView.this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+        }
         initComponents();
     }
 
@@ -97,7 +106,6 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
         loadCarritoAdapter = new LoadCarritoAdapter(this, lstCarrito);
         recyclerView.setAdapter(loadCarritoAdapter);
     }
-
     @Override
     public void failureLoadCarrito(String err) {
         Toast.makeText(CarritoView.this, err, Toast.LENGTH_SHORT).show();
@@ -108,7 +116,6 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
     public void successConfirm(ConfirmCompraData confirmCompraData) {
         makeNotifiation();
     }
-
     @Override
     public void failureConfirm(String err) {
         Toast.makeText(CarritoView.this, err, Toast.LENGTH_SHORT).show();
@@ -123,7 +130,6 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
         loadHistorialAdapter = new LoadHistorialAdapter(this, lstHistorial);
         recyclerView.setAdapter(loadHistorialAdapter);
     }
-
     @Override
     public void failureLoadHistorial(String err) {
         Toast.makeText(CarritoView.this, err, Toast.LENGTH_SHORT).show();
@@ -131,7 +137,7 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
 
     //FUNCIONES SOBRE LAS NOTIFICACIONES
     public void makeNotifiation(){
-        String channelID = "CHANNEL_ID_NOTIFICATION";
+        String channelID = "CHANNEL_ID";
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelID);
         builder.setSmallIcon(R.drawable.cart_icon)
             .setContentTitle("Confirmación de pedido")
@@ -150,7 +156,7 @@ public class CarritoView extends AppCompatActivity implements LoadCarritoContrac
             NotificationChannel notificationChannel = notificationManager.getNotificationChannel(channelID);
             if(notificationChannel == null){
                 int importance = NotificationManager.IMPORTANCE_HIGH;
-                notificationChannel = new NotificationChannel(channelID, "Canal de notificaciones", importance);
+                notificationChannel = new NotificationChannel(channelID, "Canal para notificaciones", importance);
                 notificationChannel.setLightColor(R.color.main_green);
                 notificationChannel.enableVibration(true);
                 notificationManager.createNotificationChannel(notificationChannel);

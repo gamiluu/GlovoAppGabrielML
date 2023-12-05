@@ -24,15 +24,6 @@ public class GlovoMainView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Pedimos permiso de notificación en caso de que sea necesario o que no esté dado el permiso.
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
-            if(ContextCompat.checkSelfPermission(GlovoMainView.this,
-                    android.Manifest.permission.POST_NOTIFICATIONS) !=
-                    PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(GlovoMainView.this,
-                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
-            }
-        }
         initComponents();
     }
 

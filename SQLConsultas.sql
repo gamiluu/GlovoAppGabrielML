@@ -1,6 +1,7 @@
 -- USUARIOS
 SELECT * FROM usuarios;
 SELECT contrasena FROM usuarios WHERE nombre = 'Alquezar';
+SELECT correo FROM usuarios WHERE id_usuario = 1;
 
 -- RESTAURANTES
 SELECT * FROM restaurantes;
